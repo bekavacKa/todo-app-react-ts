@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Todo from '../model';
 import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
-import { MdDone } from 'react-icons/md';
+import { MdClose, MdDone } from 'react-icons/md';
 import './styles.css';
 import { Draggable } from 'react-beautiful-dnd';
 
@@ -10,17 +10,32 @@ type Props={
     todo:Todo,
     todos:Todo[],
     setTodos: React.Dispatch<React.SetStateAction<Todo[]>>,
-    index: number;
+    index: number,
+    completedTodos: Todo[],
+    setCompletedTodos: React.Dispatch<React.SetStateAction<Todo[]>> ,
 };
 
-export default function SingleTodo({todo,todos,setTodos, index}:Props) {
+export default function SingleTodo({todo,todos,setTodos, index, completedTodos,  setCompletedTodos}:Props) {
 
     const [edit, setEdit] = useState<boolean>(false);
-    const [editTodo, setEditTodo] = useState<string>(todo.todo)
+    const [editTodo, setEditTodo] = useState<string>(todo.todo);
+
+    // useEffect(() => {
+    //     // checkIsDone();
+        
+    //   }, [todo.isDone]);
+
+    // const checkIsDone = () => {
+    //     if (!todo.isDone) {
+
+    //     }
+    // }
 
 
-    const handleDone = (id: number) => {
-        setTodos(todos.map((todo)=>todo.id === id? {...todo,isDone:!todo.isDone}:todo))
+    const handleDone = (id: number) => {   
+        setTodos(todos.map((todo) => (
+            todo.id === id? {...todo,isDone:!todo.isDone}:todo))
+        )
     };
 
     const handleDelete = (id:number) => {
@@ -55,7 +70,7 @@ export default function SingleTodo({todo,todos,setTodos, index}:Props) {
         {
             (provided, snapshot)=>(
 
-            <form className={`todos__single ${snapshot.isDragging? 'drag' : ''}`} onSubmit={(e) => handleEdit(e, todo.id)}
+            <form className={`todos__single ${snapshot.isDragging? 'drag' : ''} ${todo.isDone? "remove" : ""}`} onSubmit={(e) => handleEdit(e, todo.id)}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
              ref={provided.innerRef}>
@@ -73,10 +88,12 @@ export default function SingleTodo({todo,todos,setTodos, index}:Props) {
                         
                             todo.isDone? (
                                 <s className='todos__single-text'>
-                                {todo.todo}
+                                    <span className='todo__no'>{index + 1 + "."}</span>
+                                    {todo.todo}
                                 </s>
                             ) : (
                                 <span className='todos__single-text'>
+                                    <span className='todo__no'>{index + 1 + "."}</span>
                                     {todo.todo}
                                 </span>
                             )
@@ -94,7 +111,7 @@ export default function SingleTodo({todo,todos,setTodos, index}:Props) {
                         <AiFillDelete />
                     </span>
                     <span className='icon' onClick={() => handleDone(todo.id)}>
-                        <MdDone />
+                        {todo.isDone ? <MdClose /> : <MdDone />}
                     </span>
                 </div>
             </form>

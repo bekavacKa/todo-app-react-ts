@@ -9,7 +9,9 @@ interface Props{
 
 const InputFeild = ({todo,setTodo, handleAdd}: Props) => {
 
-    const inputRef = useRef<HTMLInputElement>(null)
+
+
+  const inputRef = useRef<HTMLInputElement>(null)
 
 
   return (
@@ -27,7 +29,7 @@ const InputFeild = ({todo,setTodo, handleAdd}: Props) => {
                 placeholder='Enter a task' 
                 className='input__box' 
         />
-        <button className='input__submit' type='submit'>Go</button>
+        <button className='input__submit' type='submit'>ADD</button>
     </form>
   )
 }

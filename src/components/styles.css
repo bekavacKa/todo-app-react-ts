@@ -29,14 +29,15 @@ li{
     right: 0px;
     border: none;
     font-size: 15px;
-    background-color: aqua;
+    background-color: yellowgreen;
     color: black;
     transition: 0.2s all;
     box-shadow: 0 0 10px black;
     cursor: pointer;
+    font-family: "Permanent Marker";
 }
 .input__submit:hover{
-    background-color: rgb(9, 230, 230);
+    background-color: rgb(132, 175, 45);
 }
 .input__submit:active{
     transform: scale(0.8);
@@ -44,26 +45,28 @@ li{
 }
 .container{
     display: flex;
-    width: 95%;
+    width: 80%;
     margin-top: 10px;
     justify-content: space-between;
     align-items: flex-start;
 }
 
 .todos {
+    margin: 50px 0;
     display: flex;
-    width: 46%;
+    width: 100%;
     flex-direction: column;
     padding: 15px;
     border-radius: 15px;
-    background-color: aquamarine;
+    background-color: rgba(143, 146, 134, 0.7);
 }
 .todos li {
     width: 100%;
 }
 .todos__heading{
     font-size: 30px;
-    color: wheat;
+    color: white;
+    text-shadow: 0 0 5px yellowgreen;
 }
 
 .todos__single{
@@ -71,21 +74,27 @@ li{
     border-radius: 5px;
     padding: 20px;
     margin-top: 15px;
-    background-color: yellowgreen;
+    background-color: rgba(153, 205, 50, 0.699);
     transition: 0.2s;
 }
 .todos__single:hover{
     box-shadow: 0 0 5px black;
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 .todos__single-text{
     flex: 1;
     padding: 5px;
     border: none;
-    font-size: 20px;
+    font-size: 1.6rem;
 }
+
 .todos__single-text:focus{
     outline: none;
+}
+.todo__no{
+    font-size: 1.3rem;
+    margin-right: 15px;
+    font-weight: 800;
 }
 .icon{
     margin-left: 10px;
@@ -93,7 +102,7 @@ li{
     cursor: pointer;
 }
 .remove{
-    background-color: rgb(189, 14, 14);
+    background-color: rgba(189, 14, 14, 0.700);
 }
 .dragactive{
     background-color: green;

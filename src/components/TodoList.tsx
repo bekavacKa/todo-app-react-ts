@@ -20,11 +20,11 @@ const TodoList:React.FC<Props> = ({todos,setTodos, completedTodos, setCompletedT
                 (provided, snapshot) => (
                 <div className={`todos ${snapshot.isDraggingOver? 'dragactive' : ''}`} ref={provided.innerRef} {...provided.droppableProps}>
                     <span className="todos__heading">
-                        Active Tasks
+                        ALL Tasks
                     </span>
                     {
                         todos.map((todo, index) => (
-                        <SingleTodo todo={todo} index={index} key={todo.id} todos={todos} setTodos={setTodos} />
+                        <SingleTodo todo={todo} index={index} key={todo.id} todos={todos} setTodos={setTodos} completedTodos={completedTodos} setCompletedTodos={setCompletedTodos} />
                         ))
                     }
                     {provided.placeholder}
@@ -34,7 +34,7 @@ const TodoList:React.FC<Props> = ({todos,setTodos, completedTodos, setCompletedT
 
         </Droppable>
 
-        <Droppable droppableId='TodosRemove'>
+        {/* <Droppable droppableId='TodosRemove'>
 
             {
                 (provided,snapshot) =>  (
@@ -45,7 +45,7 @@ const TodoList:React.FC<Props> = ({todos,setTodos, completedTodos, setCompletedT
                             </span>
                             {
                                 completedTodos.map((todo, index) => (
-                                <SingleTodo todo={todo} key={todo.id} index={index} todos={completedTodos} setTodos={setCompletedTodos} />
+                                <SingleTodo todo={todo} key={todo.id} index={index} todos={todos} setTodos={setTodos} completedTodos={completedTodos} setCompletedTodos={setCompletedTodos} />
                                 ))
                             }
                             {provided.placeholder}
@@ -53,7 +53,7 @@ const TodoList:React.FC<Props> = ({todos,setTodos, completedTodos, setCompletedT
                 )
             }
 
-        </Droppable>
+        </Droppable> */}
     </div>
 
     // <div className='todos'>

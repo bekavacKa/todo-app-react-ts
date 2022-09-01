@@ -31,6 +31,9 @@ const App: React.FC = () => {
   const [completedTodos, setCompletedTodos] = useState<Todo[]>([])
   // console.log(todo);
 
+
+  
+
   const handleAdd = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -38,7 +41,6 @@ const App: React.FC = () => {
       setTodos([...todos, {id:Date.now(), todo:todo, isDone: false}])
       setTodo("");
     }
-
   }
 
   const onDragEnd = (result: DropResult) => {
@@ -68,7 +70,7 @@ const App: React.FC = () => {
 
   };
 
-  console.log(todos);
+  // console.log(todos);
 
   
 
@@ -76,7 +78,7 @@ const App: React.FC = () => {
     <DragDropContext onDragEnd={onDragEnd}>
 
       <div className="App">
-        <span className='heading'>TASKS</span>
+        <span className='heading'>TODO APP</span>
         <InputFeild todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
         {/* <TodoList /> */}
         {/* {todos.map((t) => (<li>{t.todo}</li>))} */}
